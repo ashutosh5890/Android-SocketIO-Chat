@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data class="ChatActivityBinding">
+
+        <variable
+            name="chatViewModel"
+            type="com.chetu.kotlinchat.module.chat.viewmodel.ChatViewModel" />
+
+        <variable
+            name="toolbarViewModel"
+            type="com.chetu.kotlinchat.module.home.viewmodel.ToolbarViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/chatbg"
+        tools:context=".module.chat.view.ChatActivity">
+
+        <include
+            android:id="@+id/chat_toolbar"
+            layout="@layout/toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:minHeight="?attr/actionBarSize"
+            bind:toolbarViewModel="@{toolbarViewModel}" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_chat_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/rl_bottom"
+            android:layout_below="@+id/chat_toolbar" />
+
+        <!-- Bottom part of chat screen -->
+        <RelativeLayout
+            android:id="@+id/rl_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+
+            <ImageView
+                android:id="@+id/img_emoji"
+                android:layout_width="@dimen/dp_30"
+                android:layout_height="@dimen/dp_30"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_margin="@dimen/dp_5"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_emoji" />
+
+            <EditText
+                android:id="@+id/edt_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_margin="@dimen/dp_5"
+                android:layout_toLeftOf="@+id/img_send"
+                android:layout_toRightOf="@+id/img_emoji"
+                android:background="@drawable/edit_message_bg"
+                android:hint="Write a message.."
+                android:paddingBottom="@dimen/dp_8"
+                android:paddingLeft="@dimen/dp_10"
+                android:paddingRight="@dimen/dp_50"
+                android:paddingTop="@dimen/dp_8"
+                android:text="@={chatViewModel.messageText}"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/sp_14" />
+
+            <ImageView
+                android:id="@+id/img_attach"
+                android:layout_width="@dimen/dp_30"
+                android:layout_height="@dimen/dp_30"
+                android:layout_alignRight="@+id/edt_message"
+                android:layout_centerVertical="true"
+                android:adjustViewBounds="true"
+                android:onClick="@{chatViewModel.onAttachmentClick}"
+                android:paddingRight="@dimen/dp_5"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_attach" />
+
+            <ImageView
+                android:id="@+id/img_send"
+                android:layout_width="@dimen/dp_30"
+                android:layout_height="@dimen/dp_30"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_margin="@dimen/dp_5"
+                android:adjustViewBounds="true"
+                android:onClick="@{chatViewModel.onMessageSend}"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_send" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</layout>

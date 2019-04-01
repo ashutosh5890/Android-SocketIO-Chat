@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data class="ImageChatBinding">
+        <variable
+            name="messageViewModel"
+            type="com.chetu.kotlinchat.module.chat.viewmodel.ChatItemViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="@dimen/dp_180"
+            android:layout_height="@dimen/dp_180"
+            android:scaleType="centerCrop"
+            android:src="@drawable/temp_profile1"/>
+
+    </RelativeLayout>
+
+</layout>

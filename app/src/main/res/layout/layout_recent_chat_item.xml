@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data class="RecentChatItemBinding">
+        <variable
+            name="recentChatItemViewModel"
+            type="com.chetu.kotlinchat.module.chat.viewmodel.RecentChatItemViewModel"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_10"
+        android:background="@color/colorWhite"
+        android:onClick="@{recentChatItemViewModel.onRecentChatClick}">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_profile_pic"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            android:src="@drawable/temp_profile1"
+            app:profilePic="@{recentChatItemViewModel.pic}"
+            app:civ_border_width="@dimen/dp_2"
+            app:civ_border_color="@color/colorDullWhite"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView android:id="@+id/txt_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:text="@{recentChatItemViewModel.fullName}"
+            android:textSize="@dimen/sp_16"
+            android:textColor="@color/colorPrimaryText"
+            app:layout_constraintLeft_toRightOf="@+id/img_profile_pic"
+            app:layout_constraintTop_toTopOf="@+id/img_profile_pic" />
+
+        <TextView android:id="@+id/txt_last_msg"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:text="@{recentChatItemViewModel.lastMessage}"
+            android:textSize="@dimen/sp_14"
+            android:textColor="@color/colorLightBlack"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/img_profile_pic"
+            app:layout_constraintTop_toBottomOf="@+id/txt_user_name" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

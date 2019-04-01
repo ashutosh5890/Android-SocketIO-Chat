@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data class="RightChatBinding"></data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/dp_5"
+        android:paddingRight="@dimen/dp_5"
+        android:paddingTop="@dimen/dp_2"
+        android:paddingBottom="@dimen/dp_2">
+
+        <RelativeLayout android:id="@+id/rl_right_chat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_80"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:layout_gravity="right"
+            android:padding="@dimen/dp_8"
+            android:background="@drawable/chat_background_right"/>
+
+    </FrameLayout>
+
+</layout>

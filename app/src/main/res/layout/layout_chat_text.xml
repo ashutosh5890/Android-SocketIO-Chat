@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data class="TextChatBinding">
+
+        <variable
+            name="messageViewModel"
+            type="com.chetu.kotlinchat.module.chat.viewmodel.ChatItemViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="@dimen/dp_60"
+            android:text="@{messageViewModel.messageText}"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="@dimen/sp_14" />
+
+        <ImageView android:id="@+id/img_status"
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
+            android:layout_below="@+id/tv_message"
+            android:layout_alignRight="@+id/tv_message"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_sending"
+            android:visibility="@{messageViewModel.statusVisibility}"
+            app:imageResource="@{messageViewModel.statusIcon}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/dp_2"
+            android:text="@{messageViewModel.messageTime}"
+            android:textColor="@color/colorGrey"
+            android:textSize="@dimen/sp_12"
+            android:layout_toLeftOf="@+id/img_status"
+            android:layout_alignBottom="@+id/img_status"/>
+
+    </RelativeLayout>
+
+</layout>
